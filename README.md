@@ -13,6 +13,15 @@ Option list:
 - `-o` or `--ofile`      : Path to the output file for image and video modes
 - `-s` or `--cam_source` : Camera to be used for webcam mode. Use 0,1,2,3... to select cameras connected to the PC. Default value is 0
 
+Installation:
+- <b>Direct install : </b>
+<t>- `pip install img2ascii`
+- <b>From Git : </b>
+<t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`
+<t>2. `cd img2ascii`
+<t>3. `python3 setup.py build`
+<t>4. `python3 setup.py install`
+
 Usage :
 
 - <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
