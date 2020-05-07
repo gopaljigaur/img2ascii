@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-def video_gen(color,kernel,density,inputfile,outputfile):
+def generate_ascii_v(color,kernel,density,inputfile,outputfile):
     kernel=kernel
     density =density
     inputfile = inputfile

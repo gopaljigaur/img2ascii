@@ -27,3 +27,12 @@ Usage :
 - <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
 - <b>For video :</b> `img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
 - <b>For webcam :</b> `img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]`
+
+Usage in python code:
+
+- <b>For image :</b> `from img2ascii import image_gen`<br> 
+<t>then `image_gen.generate_ascii_i(color, kernel, density, inputfile, outputfile)`<br>
+- <b>For video :</b> `from img2ascii import video_gen`<br> 
+<t>then `video_gen.generate_ascii_v(color, kernel, density, inputfile, outputfile)`<br>
+- <b>For webcam :</b> `from img2ascii import image_gen`<br> 
+<t>then `image_gen.generate_ascii_w(color, kernel, density, cam_source)`

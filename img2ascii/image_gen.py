@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-def image_gen(color,kernel,density,inputfile,outputfile):
+def generate_ascii_i(color,kernel,density,inputfile,outputfile):
     print('')
     print('Generating ASCII image...')
     kernel=kernel

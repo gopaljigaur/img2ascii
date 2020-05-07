@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-def webcam_gen(color,kernel,density,cam_source):
+def generate_ascii_w(color,kernel,density,cam_source):
     kernel=kernel
     density =density
     gscale = " .'`^\",:;Il!i><~+_-?][}{1)(|\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"

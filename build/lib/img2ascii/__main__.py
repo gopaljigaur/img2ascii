@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
 import sys, getopt, os.path, cv2, filetype
-from image_gen import image_gen
-from video_gen import video_gen
-from webcam_gen import webcam_gen
+from .image_gen import generate_ascii_i
+from .video_gen import generate_ascii_v
+from .webcam_gen import generate_ascii_w
 
 
 def main(argv):
@@ -118,7 +118,7 @@ def main(argv):
       print('')
       print('Input file   : ', inputfile)
       print('Output file  : ', outputfile)
-      image_gen(color,kernel,density,inputfile,outputfile)
+      generate_ascii_i(color,kernel,density,inputfile,outputfile)
    elif(mode=='v'):
       print('Video Mode')
       if(color==0):
@@ -134,7 +134,7 @@ def main(argv):
       print('Input file   : ', inputfile)
       print('Output file  : ', outputfile)
       
-      video_gen(color,kernel,density,inputfile,outputfile)
+      generate_ascii_v(color,kernel,density,inputfile,outputfile)
    elif(mode=='w'):
       print('Webcam Mode')
       #testing cam availability
@@ -157,7 +157,7 @@ def main(argv):
       print('')
       print('Video source : ',cam_source)
       print('')
-      webcam_gen(color,kernel,density,cam_source)
+      generate_ascii_w(color,kernel,density,cam_source)
    
 if __name__ == "__main__":
    main(sys.argv[1:])
