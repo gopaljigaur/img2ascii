@@ -15,7 +15,6 @@ try:
     start = content[:content.find("version")+9]
     end = content[content.find("author")-7:]
 
-
     print("Current Version : ",version)
     print("New version name : ",end="")
     version_name= input()
