@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="img2ascii",
-    version="1.1.0",
+    version="1.1.5",
     author="Gopalji Gaur",
     author_email="gopaljigaur@gmail.com",
     description="Image/Video to ASCII conversion",

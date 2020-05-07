@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: img2ascii
-Version: 1.1.0
+Version: 1.1.5
 Summary: Image/Video to ASCII conversion
 Home-page: https://github.com/gopaljigaur/img2ascii
 Author: Gopalji Gaur
@@ -24,10 +24,10 @@ Description: # Image2ASCII
         Installation:
         - <b>Direct install : </b>
         <t>- `pip install img2ascii`
-        - <b>From Git : </b>
-        <t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`
-        <t>2. `cd img2ascii`
-        <t>3. `python3 setup.py build`
+        - <b>From Git : </b><br>
+        <t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`<br>
+        <t>2. `cd img2ascii`<br>
+        <t>3. `python3 setup.py build`<br>
         <t>4. `python3 setup.py install`
         
         Usage :
@@ -35,6 +35,15 @@ Description: # Image2ASCII
         - <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
         - <b>For video :</b> `img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
         - <b>For webcam :</b> `img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]`
+        
+        Usage in python code:
+        
+        - <b>For image :</b> `from img2ascii import image_gen`<br> 
+        <t>then `image_gen.generate_ascii_i(color, kernel, density, inputfile, outputfile)`<br>
+        - <b>For video :</b> `from img2ascii import video_gen`<br> 
+        <t>then `video_gen.generate_ascii_v(color, kernel, density, inputfile, outputfile)`<br>
+        - <b>For webcam :</b> `from img2ascii import image_gen`<br> 
+        <t>then `image_gen.generate_ascii_w(color, kernel, density, cam_source)`
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
