@@ -16,10 +16,10 @@ Option list:
 Installation:
 - <b>Direct install : </b>
 <t>- `pip install img2ascii`
-- <b>From Git : </b>
-<t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`
-<t>2. `cd img2ascii`
-<t>3. `python3 setup.py build`
+- <b>From Git : </b><br>
+<t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`<br>
+<t>2. `cd img2ascii`<br>
+<t>3. `python3 setup.py build`<br>
 <t>4. `python3 setup.py install`
 
 Usage :
