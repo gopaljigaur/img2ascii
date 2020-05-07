@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 import sys, getopt, os.path, cv2, filetype
-#from image_gen import image_gen
-#from video_gen import video_gen
+from image_gen import image_gen
+from video_gen import video_gen
 from webcam_gen import webcam_gen
 
 
