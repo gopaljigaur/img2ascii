@@ -5,7 +5,7 @@ from .image_gen import generate_ascii_i
 from .video_gen import generate_ascii_v
 from .webcam_gen import generate_ascii_w
 from .text_gen import generate_ascii_t
-from pygrabber.dshow_graph import FilterGraph
+from .pygrabber.dshow_graph import FilterGraph
 
 
 def getCamera():
