@@ -4,14 +4,15 @@ img2ascii is a library written in python which can convert image or video files 
 
 Option list:
 
-- `-h` or `--help`       : To generate this help text
-- `-m` or `--mode`       : Select the mode of operation -- `i` for image, `v` for video and `w` for webcam input
+- `-h` or `--help`       : To generate the help text
+- `-m` or `--mode`       : Select the mode of operation -- `t` for text, `i` for image, `v` for video and `w` for webcam input
 - `-c` or `--color`      : Optional parameter to select color mode. 0 - B/W, 1 - Grayscale and 2 - RGB. Default color mode is B/W
 - `-k` or `--kernel`     : Optional parameter to set the kernel size, default is 7px
 - `-d` or `--density`    : Optional parameter to set the ASCII text density on image, default is 0.3 units; Range - (0,1) (exclusive)
 - `-i` or `--ifile`      : Path to the input file for image and video modes
 - `-o` or `--ofile`      : Path to the output file for image and video modes
 - `-s` or `--cam_source` : Camera to be used for webcam mode. Use 0,1,2,3... to select cameras connected to the PC. Default value is 0
+- `-f` or `--fancy`      : Fancy mode :). (Color mode defaults to RGB)
 
 Installation:
 - <b>Direct install : </b>
@@ -24,15 +25,20 @@ Installation:
 
 Usage :
 
-- <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
-- <b>For video :</b> `img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
-- <b>For webcam :</b> `img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]`
+- <b>For text</b> : `img2ascii.py -m <mode>[t=text] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
+- <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For video :</b> `img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For webcam :</b> `img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional] -f <fancy_mode>[optional]`
 
 Usage in python code:
 
+- <b>For image :</b> `from img2ascii import text_gen`<br> 
+<t>then `text_gen.generate_ascii_t(str inputfile, str outputfile, int kernel [o], float density [o])`<br>
 - <b>For image :</b> `from img2ascii import image_gen`<br> 
-<t>then `image_gen.generate_ascii_i(color, kernel, density, inputfile, outputfile)`<br>
+<t>then `image_gen.generate_ascii_i(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o])`<br>
 - <b>For video :</b> `from img2ascii import video_gen`<br> 
-<t>then `video_gen.generate_ascii_v(color, kernel, density, inputfile, outputfile)`<br>
+<t>then `video_gen.generate_ascii_v(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o])`<br>
 - <b>For webcam :</b> `from img2ascii import image_gen`<br> 
-<t>then `image_gen.generate_ascii_w(color, kernel, density, cam_source)`
+<t>then `image_gen.generate_ascii_w(int color [o], int kernel [o], float density [o], int cam_source [o], str cam_name [o], bool fancy [o])`
+
+<b>NOTE :</b> Parameters followed by [o] are optional
