@@ -31,19 +31,21 @@ except:
 try:
     shutil.rmtree("build")
 except OSError as e:
-    print("Error: %s : %s" % ("build", e.strerror))
+    print("Warn: %s : %s" % ("build", e.strerror))
 try:
     shutil.rmtree("dist")
 except OSError as e:
-    print("Error: %s : %s" % ("dist", e.strerror))
+    print("Warn: %s : %s" % ("dist", e.strerror))
 try:
     shutil.rmtree("img2ascii.egg-info")
 except OSError as e:
-    print("Error: %s : %s" % ("img2ascii.egg-info", e.strerror))
+    print("Warn: %s : %s" % ("img2ascii.egg-info", e.strerror))
 
 try:
-    subprocess.call(["python","setup.py","sdist","bdist_wheel"])
-    subprocess.call(["twine","upload","dist/*","-u",login,"-p",passw])
+    subprocess.call(["python","-m","setup.py","sdist","bdist_wheel"])
+    subprocess.call(["python","-m","twine","upload","dist/*","-u",login,"-p",passw])
+    subprocess.call(["git","pull"])
+    subprocess.call(["git","push"])
 except subprocess.CalledProcessError:
     print('error')
     sys.exit()
