@@ -1,3 +1,4 @@
+MANIFEST.in
 README.md
 setup.py
 img2ascii/PyGrabber.py
@@ -18,3 +19,7 @@ img2ascii.egg-info/SOURCES.txt
 img2ascii.egg-info/dependency_links.txt
 img2ascii.egg-info/requires.txt
 img2ascii.egg-info/top_level.txt
+img2ascii/fancy/1.jpg
+img2ascii/fancy/2.jpg
+img2ascii/fancy/3.jpg
+img2ascii/fancy/4.jpg

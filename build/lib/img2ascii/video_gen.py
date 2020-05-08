@@ -13,7 +13,7 @@ def generate_ascii_v(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
 
     ret, frame = vid.read()
     
-    fancy_dir = 'fancy'
+    fancy_dir = './fancy'
     fancy_num = len([name for name in os.listdir(fancy_dir) if os.path.isfile(os.path.join(fancy_dir, name))])
     #print(fancy_num)
     
