@@ -9,7 +9,7 @@ def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
     density =density
     gscale = " .'`^\",:;Il!i><~+_-?][}{1)(|\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
       
-    fancy_dir = './fancy'
+    fancy_dir = '/fancy'
     fancy_num = len([name for name in os.listdir(fancy_dir) if os.path.isfile(os.path.join(fancy_dir, name))])
     #print(fancy_num)
     img_c = cv.imread(inputfile)
