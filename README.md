@@ -1,5 +1,6 @@
+[![PyPI version](https://badge.fury.io/py/img2ascii.svg)](https://badge.fury.io/py/img2ascii) 
 # Image2ASCII
- 
+
 img2ascii is a library written in python which can convert image or video files to ASCII
 
 Option list:
