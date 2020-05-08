@@ -11,7 +11,7 @@ def generate_ascii_w(color=0,kernel=7,density=0.3,cam_source=0,cam_name="",fancy
     ret=True
     cam_name = cam_name
 
-    fancy_dir = '/fancy'
+    fancy_dir = 'fancy'
     fancy_num = len([name for name in os.listdir(fancy_dir) if os.path.isfile(os.path.join(fancy_dir, name))])
     #print(fancy_num)
 
