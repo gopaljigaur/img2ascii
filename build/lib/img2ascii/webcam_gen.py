@@ -1,7 +1,35 @@
-import numpy as np
-import cv2 as cv
-from random import random
+##
+##img2ascii
+##
+##Authors:
+## Gopalji Gaur <gopaljigaur@gmail.com>
+##
+##Copyright (c) 2020 Gopalji Gaur
+##
+##Permission is hereby granted, free of charge, to any person obtaining a copy
+##of this software and associated documentation files (the "Software"), to deal
+##in the Software without restriction, including without limitation the rights
+##to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+##copies of the Software, and to permit persons to whom the Software is
+##furnished to do so, subject to the following conditions:
+##
+##The above copyright notice and this permission notice shall be included in all
+##copies or substantial portions of the Software.
+##
+##THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+##IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+##FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+##AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+##LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+##OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+##SOFTWARE.
+##
+
 import os, os.path
+from pathlib import Path
+import cv2 as cv
+import numpy as np
+from random import random
 
 def generate_ascii_w(color=0,kernel=7,density=0.3,cam_source=0,cam_name="",fancy=False):
     kernel=kernel
@@ -10,10 +38,10 @@ def generate_ascii_w(color=0,kernel=7,density=0.3,cam_source=0,cam_name="",fancy
     cam = cv.VideoCapture(cam_source,cv.CAP_DSHOW)
     ret=True
     cam_name = cam_name
-
-    fancy_dir = './fancy'
+    
+    cwd = Path(__file__).parent
+    fancy_dir = os.path.join(cwd,'fancy')
     fancy_num = len([name for name in os.listdir(fancy_dir) if os.path.isfile(os.path.join(fancy_dir, name))])
-    #print(fancy_num)
 
     ret, img_c = cam.read()
     img_c = cv.flip(img_c,1)
@@ -35,7 +63,6 @@ def generate_ascii_w(color=0,kernel=7,density=0.3,cam_source=0,cam_name="",fancy
         col_mode = "RGB"
     
     frame_title = cam_name+" | Color - "+col_mode+" | kernel_size - "+str(kernel)+"x"+str(kernel)+" | text_density - "+str(density)
-
 
     print('Press Esc to exit')
     while(ret):
@@ -62,7 +89,6 @@ def generate_ascii_w(color=0,kernel=7,density=0.3,cam_source=0,cam_name="",fancy
                 if color==0:
                     avg_c = (255,255,255)
                 elif color==1:
-                    #print(avg_c)
                     avg_c = np.uint8([[[avg_c[0],avg_c[1],avg_c[2]]]])
                     avg_c = cv.cvtColor(avg_c,cv.COLOR_BGR2GRAY)
                     avg_c = (float(avg_c[0][0]),float(avg_c[0][0]),float(avg_c[0][0]))

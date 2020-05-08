@@ -43,3 +43,5 @@ Usage in python code:
 <t>then `image_gen.generate_ascii_w(int color [o], int kernel [o], float density [o], int cam_source [o], str cam_name [o], bool fancy [o])`
 
 <b>NOTE :</b> Parameters followed by [o] are optional
+
+Also, thanks to [Andrea Schiavinato](https://github.com/bunkahle) for [pygrabber](https://github.com/bunkahle/pygrabber)

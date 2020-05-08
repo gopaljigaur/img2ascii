@@ -1,5 +1,10 @@
 #!/usr/bin/python
-
+##
+##img2ascii
+##
+##Authors:
+## Gopalji Gaur <gopaljigaur@gmail.com>
+##
 ##Copyright (c) 2020 Gopalji Gaur
 ##
 ##Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,40 +24,32 @@
 ##LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 ##OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ##SOFTWARE.
+##
 
 import sys, getopt, os, os.path, cv2, filetype
+from .text_gen import generate_ascii_t
 from .image_gen import generate_ascii_i
 from .video_gen import generate_ascii_v
 from .webcam_gen import generate_ascii_w
-from .text_gen import generate_ascii_t
-from .dshow_graph import FilterGraph
-
-
-def getCamera():
-   graph = FilterGraph()
-   devices = graph.get_input_devices()
-   num_devices = len(devices)
-   dev = {}
-   for i in range(0,num_devices):
-      dev[i] = devices[i]
-   return dev
+from .pygrabber.dshow_graph import FilterGraph
 
 def main(argv):
-   kernel = 7
-   density = 0.3
-   color = 0
+   kernel = 7    #default
+   density = 0.3 #default
+   color = 0     #default
    mode = ''
    inputfile = ''
    outputfile = ''
    cam_source = ''
    no_device=False
+   fancy = False #default
+
+   #get attached cameras
    try:
-      device_list = getCamera()
+      device_list = getCamera() 
    except:
       no_device=True
       
-   fancy = False
-   
    try:
       # modes - text, image, video, webcam
       # color - colored mode
@@ -281,6 +278,15 @@ def main(argv):
       print('Video source : ',device_list.get(cam_source))
       print('')
       generate_ascii_w(color,kernel,density,cam_source,device_list.get(cam_source),fancy)
-   
+
+def getCamera():
+   graph = FilterGraph()
+   devices = graph.get_input_devices()
+   num_devices = len(devices)
+   dev = {}
+   for i in range(0,num_devices):
+      dev[i] = devices[i]
+   return dev
+
 if __name__ == "__main__":
    main(sys.argv[1:])

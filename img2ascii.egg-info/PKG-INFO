@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: img2ascii
-Version: 1.2.4
+Version: 1.2.5
 Summary: Image/Video to ASCII conversion
 Home-page: https://github.com/gopaljigaur/img2ascii
 Author: Gopalji Gaur
@@ -51,6 +51,8 @@ Description: [![PyPI version](https://badge.fury.io/py/img2ascii.svg)](https://b
         <t>then `image_gen.generate_ascii_w(int color [o], int kernel [o], float density [o], int cam_source [o], str cam_name [o], bool fancy [o])`
         
         <b>NOTE :</b> Parameters followed by [o] are optional
+        
+        Also, thanks to [Andrea Schiavinato](https://github.com/bunkahle) for [pygrabber](https://github.com/bunkahle/pygrabber)
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
