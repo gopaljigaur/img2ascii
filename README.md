@@ -32,7 +32,7 @@ Usage :
 
 Usage in python code:
 
-- <b>For image :</b> `from img2ascii import text_gen`<br> 
+- <b>For text :</b> `from img2ascii import text_gen`<br> 
 <t>then `text_gen.generate_ascii_t(str inputfile, str outputfile, int kernel [o], float density [o])`<br>
 - <b>For image :</b> `from img2ascii import image_gen`<br> 
 <t>then `image_gen.generate_ascii_i(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o])`<br>
