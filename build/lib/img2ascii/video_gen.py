@@ -75,7 +75,7 @@ def generate_ascii_v(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
                 if(fancy):
                     avg_c = np.mean(np.mean(img_fancy[i*kernel:i*kernel+kernel,j*kernel:j*kernel+kernel],axis=0),axis=0)
                 else:
-                    avg_c = np.mean(np.mean(img_c[i*kernel:i*kernel+kernel,j*kernel:j*kernel+kernel],axis=0),axis=0)
+                    avg_c = np.mean(np.mean(frame[i*kernel:i*kernel+kernel,j*kernel:j*kernel+kernel],axis=0),axis=0)
             
                 if color==0:
                     avg_c = (255,255,255)

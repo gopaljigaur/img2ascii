@@ -25,7 +25,7 @@ from .image_gen import generate_ascii_i
 from .video_gen import generate_ascii_v
 from .webcam_gen import generate_ascii_w
 from .text_gen import generate_ascii_t
-from .pygrabber.dshow_graph import FilterGraph
+from .dshow_graph import FilterGraph
 
 
 def getCamera():
@@ -45,7 +45,12 @@ def main(argv):
    inputfile = ''
    outputfile = ''
    cam_source = ''
-   device_list = getCamera()
+   no_device=False
+   try:
+      device_list = getCamera()
+   except:
+      no_device=True
+      
    fancy = False
    
    try:
@@ -154,7 +159,7 @@ def main(argv):
 
       elif opt in ("-s", "--cam_source"):
          cam_source = int(arg)
-         if(len(device_list.keys())==0):
+         if(no_device):
             print("No camera input available. Please check your camera or use text, image or video mode.")
             sys.exit()
 
@@ -228,6 +233,9 @@ def main(argv):
       generate_ascii_v(inputfile,outputfile,color,kernel,density,fancy)
 
    elif(mode=='w'):
+      if(no_device):
+         print("No camera input available. Please check your camera or use text, image or video mode.")
+         sys.exit()
       print('///////////////////////')
       print('//////Webcam Mode//////')
       print('///////////////////////')
