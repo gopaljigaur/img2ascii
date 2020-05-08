@@ -1,0 +1,3 @@
+include README.md
+include img2ascii/fancy/*.jpg
+include img2ascii/pygrabber/*
