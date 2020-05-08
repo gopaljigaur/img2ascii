@@ -19,7 +19,8 @@ try:
     print("New version name : ",end="")
     version_name= input()
     new = start+version_name+end
-
+    print("Specify the changes : ",end='')
+    msg=input()
     print("Username : ",end="")
     login = input()
     passw = getpass(prompt="Password : ",stream=None)
@@ -45,6 +46,7 @@ try:
     subprocess.call(["python","-m","setup.py","sdist","bdist_wheel"])
     subprocess.call(["python","-m","twine","upload","dist/*","-u",login,"-p",passw])
     subprocess.call(["git","pull"])
+    subprocess.call(["git","commit","-a","-m",msg])
     subprocess.call(["git","push"])
 except subprocess.CalledProcessError:
     print('error')
