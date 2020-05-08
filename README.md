@@ -17,7 +17,7 @@ Option list:
 
 Installation:
 - <b>Direct install : </b>
-<t>- `pip install img2ascii`
+<t>- `python3 -m pip install img2ascii`
 - <b>From Git : </b><br>
 <t>1. `git clone https://github.com/gopaljigaur/img2ascii.git`<br>
 <t>2. `cd img2ascii`<br>
@@ -26,10 +26,10 @@ Installation:
 
 Usage :
 
-- <b>For text</b> : `img2ascii.py -m <mode>[t=text] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
-- <b>For image :</b> `img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
-- <b>For video :</b> `img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
-- <b>For webcam :</b> `img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional] -f <fancy_mode>[optional]`
+- <b>For text</b> : `img2ascii.py -m t -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
+- <b>For image :</b> `img2ascii.py -m i -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For video :</b> `img2ascii.py -m v -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For webcam :</b> `img2ascii.py -m w -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional] -f <fancy_mode>[optional]`
 
 Usage in python code:
 
