@@ -8,6 +8,9 @@ Option list:
 - `-h` or `--help`       : To generate the help text
 - `-m` or `--mode`       : Select the mode of operation -- `t` for text, `i` for image, `v` for video and `w` for webcam input
 - `-c` or `--color`      : Optional parameter to select color mode. 0 - B/W, 1 - Grayscale and 2 - RGB. Default color mode is B/W
+- `--fcolor`             : Optional parameter to set the text color in binary color mode. Default = white
+- `--bcolor`             : Optional parameter to set the background color in binary color mode. Default = black
+<b>INFO:</b>for `--fcolor` and `--bcolor`, you can use color names - `white`, `black`, `red`, `green`, `blue`, `yellow`, `cyan`, `magenta`. For all other colors hex color codes must be supplied. Example - `ffcc99`
 - `-k` or `--kernel`     : Optional parameter to set the kernel size, default is 7px
 - `-d` or `--density`    : Optional parameter to set the ASCII text density on image, default is 0.3 units; Range - (0,1) (exclusive)
 - `-i` or `--ifile`      : Path to the input file for image and video modes
@@ -27,20 +30,20 @@ Installation:
 Usage :
 
 - <b>For text</b> : `img2ascii.py -m t -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]`
-- <b>For image :</b> `img2ascii.py -m i -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
-- <b>For video :</b> `img2ascii.py -m v -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
-- <b>For webcam :</b> `img2ascii.py -m w -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional] -f <fancy_mode>[optional]`
+- <b>For image :</b> `img2ascii.py -m i -c[color mode (optional)] --fcolor <text_color_hex>[optional] --bcolor <background_color_hex>[optional] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For video :</b> `img2ascii.py -m v -c[color mode (optional)] --fcolor <text_color_hex>[optional] --bcolor <background_color_hex>[optional] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional] -f <fancy_mode>[optional]`
+- <b>For webcam :</b> `img2ascii.py -m w -c[color mode (optional)] --fcolor <text_color_hex>[optional] --bcolor <background_color_hex>[optional] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional] -f <fancy_mode>[optional]`
 
 Usage in python code:
 
 - <b>For text :</b> `from img2ascii import text_gen`<br> 
 <t>then `text_gen.generate_ascii_t(str inputfile, str outputfile, int kernel [o], float density [o])`<br>
 - <b>For image :</b> `from img2ascii import image_gen`<br> 
-<t>then `image_gen.generate_ascii_i(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o])`<br>
+<t>then `image_gen.generate_ascii_i(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o], tuple(int) fcolor [o], tuple(int) bcolor [o])`<br>
 - <b>For video :</b> `from img2ascii import video_gen`<br> 
-<t>then `video_gen.generate_ascii_v(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o])`<br>
+<t>then `video_gen.generate_ascii_v(str inputfile, str outputfile, int color [o], int kernel [o], float density [o], bool fancy [o], tuple(int) fcolor [o], tuple(int) bcolor [o])`<br>
 - <b>For webcam :</b> `from img2ascii import image_gen`<br> 
-<t>then `image_gen.generate_ascii_w(int color [o], int kernel [o], float density [o], int cam_source [o], str cam_name [o], bool fancy [o])`
+<t>then `image_gen.generate_ascii_w(int color [o], int kernel [o], float density [o], int cam_source [o], str cam_name [o], bool fancy [o], tuple(int) fcolor [o], tuple(int) bcolor [o])`
 
 <b>NOTE :</b> Parameters followed by [o] are optional
 
