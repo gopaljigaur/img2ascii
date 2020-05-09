@@ -9,8 +9,8 @@ Option list:
 - `-m` or `--mode`       : Select the mode of operation -- `t` for text, `i` for image, `v` for video and `w` for webcam input
 - `-c` or `--color`      : Optional parameter to select color mode. 0 - B/W, 1 - Grayscale and 2 - RGB. Default color mode is B/W
 - `--fcolor`             : Optional parameter to set the text color in binary color mode. Default = white
-- `--bcolor`             : Optional parameter to set the background color in binary color mode. Default = black
-<b>INFO:</b>for `--fcolor` and `--bcolor`, you can use color names - `white`, `black`, `red`, `green`, `blue`, `yellow`, `cyan`, `magenta`. For all other colors hex color codes must be supplied. Example - `ffcc99`
+- `--bcolor`             : Optional parameter to set the background color in binary color mode. Default = black<br>
+<b>INFO:</b> For `--fcolor` and `--bcolor`, you can use color names - `white`, `black`, `red`, `green`, `blue`, `yellow`, `cyan`, `magenta`. For all other colors hex color codes must be supplied. Example - `ffcc99`
 - `-k` or `--kernel`     : Optional parameter to set the kernel size, default is 7px
 - `-d` or `--density`    : Optional parameter to set the ASCII text density on image, default is 0.3 units; Range - (0,1) (exclusive)
 - `-i` or `--ifile`      : Path to the input file for image and video modes
