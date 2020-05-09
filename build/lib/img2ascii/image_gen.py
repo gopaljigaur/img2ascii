@@ -31,7 +31,11 @@ import cv2 as cv
 import numpy as np
 from random import random
 
-def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=False):
+def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=False,fcolor=(255,255,255),bcolor=(0,0,0)):
+    # converting RGB to BGR
+    fcolor = fcolor[::-1]
+    bcolor = bcolor[::-1]
+    
     print('Generating ASCII image...')
     kernel=kernel
     density =density
@@ -54,7 +58,7 @@ def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
 
     col_mode=""
     if(color==0):
-        col_mode = "B/W"
+        col_mode = "binary"
     if(color==1):
         col_mode = "Gray"
     if(color==2):
@@ -65,6 +69,7 @@ def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
     asci_scale= np.zeros(shape=(r_o,c_o))
         
     img_o= np.zeros_like(img_c)
+    img_o[:] = bcolor
             
     for i in range(0,r_o):
         for j in range(0,c_o):
@@ -74,7 +79,7 @@ def generate_ascii_i(inputfile,outputfile,color=0,kernel=7,density=0.3,fancy=Fal
             else:
                 avg_c = np.mean(np.mean(img_c[i*kernel:i*kernel+kernel,j*kernel:j*kernel+kernel],axis=0),axis=0)
             if color==0:
-                avg_c = (255,255,255)
+                avg_c = fcolor
             elif color==1:
                 avg_c = np.uint8([[[avg_c[0],avg_c[1],avg_c[2]]]])
                 avg_c = cv.cvtColor(avg_c,cv.COLOR_BGR2GRAY)
