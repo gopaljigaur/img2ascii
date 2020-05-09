@@ -1,4 +1,30 @@
 #!/usr/bin/python
+##
+##img2ascii
+##
+##Authors:
+## Gopalji Gaur <gopaljigaur@gmail.com>
+##
+##Copyright (c) 2020 Gopalji Gaur
+##
+##Permission is hereby granted, free of charge, to any person obtaining a copy
+##of this software and associated documentation files (the "Software"), to deal
+##in the Software without restriction, including without limitation the rights
+##to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+##copies of the Software, and to permit persons to whom the Software is
+##furnished to do so, subject to the following conditions:
+##
+##The above copyright notice and this permission notice shall be included in all
+##copies or substantial portions of the Software.
+##
+##THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+##IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+##FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+##AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+##LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+##OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+##SOFTWARE.
+##
 
 ##Copyright (c) 2020 Gopalji Gaur
 ##
@@ -21,33 +47,29 @@
 ##SOFTWARE.
 
 import sys, getopt, os, os.path, cv2, filetype
+from .text_gen import generate_ascii_t
 from .image_gen import generate_ascii_i
 from .video_gen import generate_ascii_v
 from .webcam_gen import generate_ascii_w
-from .text_gen import generate_ascii_t
-from pygrabber.dshow_graph import FilterGraph
-
-
-def getCamera():
-   graph = FilterGraph()
-   devices = graph.get_input_devices()
-   num_devices = len(devices)
-   dev = {}
-   for i in range(0,num_devices):
-      dev[i] = devices[i]
-   return dev
+from .pygrabber.dshow_graph import FilterGraph
 
 def main(argv):
-   kernel = 7
-   density = 0.3
-   color = 0
+   kernel = 7    #default
+   density = 0.3 #default
+   color = 0     #default
    mode = ''
    inputfile = ''
    outputfile = ''
    cam_source = ''
-   device_list = getCamera()
-   fancy = False
-   
+   no_device=False
+   fancy = False #default
+
+   #get attached cameras
+   try:
+      device_list = getCamera() 
+   except:
+      no_device=True
+      
    try:
       # modes - text, image, video, webcam
       # color - colored mode
@@ -154,7 +176,7 @@ def main(argv):
 
       elif opt in ("-s", "--cam_source"):
          cam_source = int(arg)
-         if(len(device_list.keys())==0):
+         if(no_device):
             print("No camera input available. Please check your camera or use text, image or video mode.")
             sys.exit()
 
@@ -228,6 +250,9 @@ def main(argv):
       generate_ascii_v(inputfile,outputfile,color,kernel,density,fancy)
 
    elif(mode=='w'):
+      if(no_device):
+         print("No camera input available. Please check your camera or use text, image or video mode.")
+         sys.exit()
       print('///////////////////////')
       print('//////Webcam Mode//////')
       print('///////////////////////')
@@ -273,6 +298,15 @@ def main(argv):
       print('Video source : ',device_list.get(cam_source))
       print('')
       generate_ascii_w(color,kernel,density,cam_source,device_list.get(cam_source),fancy)
-   
+
+def getCamera():
+   graph = FilterGraph()
+   devices = graph.get_input_devices()
+   num_devices = len(devices)
+   dev = {}
+   for i in range(0,num_devices):
+      dev[i] = devices[i]
+   return dev
+
 if __name__ == "__main__":
    main(sys.argv[1:])

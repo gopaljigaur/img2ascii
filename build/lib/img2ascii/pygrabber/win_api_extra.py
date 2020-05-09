@@ -26,41 +26,32 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-from .dshow_graph import *
+from ctypes import POINTER, HRESULT
+from ctypes import windll
+from ctypes.wintypes import (DWORD, ULONG, HWND,
+                             UINT, LPCOLESTR, LCID, LPVOID)
 
+from comtypes import IUnknown, GUID
 
-class PyGrabber:
-    def __init__(self, callback):
-        self.graph = FilterGraph()
-        self.callback = callback
+LPUNKNOWN = POINTER(IUnknown)
+CLSID = GUID
+LPCLSID = POINTER(CLSID)
 
-    def get_devices(self):
-        return self.graph.get_input_devices()
+WS_CHILD = 0x40000000
+WS_CLIPSIBLINGS = 0x04000000
 
-    def get_formats(self):
-        return self.graph.get_formats()
-
-    def set_device(self, input_device_index):
-        self.graph.add_input_device(input_device_index)
-
-    def display_format_dialog(self):
-        self.graph.display_format_dialog()
-
-    def start(self, handle):
-        self.graph.add_sample_grabber(self.callback)
-        self.graph.add_default_render()
-        self.graph.prepare()
-        self.graph.configure_render(handle)
-        self.graph.run()
-
-    def stop(self):
-        self.graph.stop()
-
-    def update_window(self, width, height):
-        self.graph.update_window(width, height)
-
-    def set_device_properties(self):
-        self.graph.set_properties(self.graph.get_input_device())
-
-    def grab_frame(self):
-        self.graph.grab_frame()
+OleCreatePropertyFrame = windll.oleaut32.OleCreatePropertyFrame
+OleCreatePropertyFrame.restype = HRESULT
+OleCreatePropertyFrame.argtypes = (
+    HWND,  # [in] hwndOwner
+    UINT,  # [in] x
+    UINT,  # [in] y
+    LPCOLESTR,  # [in] lpszCaption
+    ULONG,  # [in] cObjects
+    POINTER(LPUNKNOWN),  # [in] ppUnk
+    ULONG,  # [in] cPages
+    LPCLSID,  # [in] pPageClsID
+    LCID,  # [in] lcid
+    DWORD,  # [in] dwReserved
+    LPVOID,  # [in] pvReserved
+)

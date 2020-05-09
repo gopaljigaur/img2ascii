@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="img2ascii",
-    version="1.1.6",
+    version="1.2.5",
     author="Gopalji Gaur",
     author_email="gopaljigaur@gmail.com",
     description="Image/Video to ASCII conversion",
@@ -20,4 +20,5 @@ setuptools.setup(
     ],
     python_requires='>=3.4',
     install_requires=['numpy','opencv-python','filetype','comtypes'],
+    include_package_data=True,
 )

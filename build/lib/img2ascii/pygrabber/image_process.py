@@ -26,41 +26,30 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-from .dshow_graph import *
+import cv2
+import numpy as np
 
 
-class PyGrabber:
-    def __init__(self, callback):
-        self.graph = FilterGraph()
-        self.callback = callback
+def save_image(filename, img):
+    cv2.imwrite(filename, img)
 
-    def get_devices(self):
-        return self.graph.get_input_devices()
 
-    def get_formats(self):
-        return self.graph.get_formats()
+def sepia(img):
+    kernel = np.float32([
+        [0.272, 0.534, 0.131],
+        [0.349, 0.686, 0.168],
+        [0.393, 0.769, 0.189]])
+    return cv2.transform(img, kernel)
 
-    def set_device(self, input_device_index):
-        self.graph.add_input_device(input_device_index)
 
-    def display_format_dialog(self):
-        self.graph.display_format_dialog()
+def edge_preserving(img):
+    return cv2.edgePreservingFilter(img)
 
-    def start(self, handle):
-        self.graph.add_sample_grabber(self.callback)
-        self.graph.add_default_render()
-        self.graph.prepare()
-        self.graph.configure_render(handle)
-        self.graph.run()
 
-    def stop(self):
-        self.graph.stop()
+def stylization(img):
+    return cv2.stylization(img)
 
-    def update_window(self, width, height):
-        self.graph.update_window(width, height)
 
-    def set_device_properties(self):
-        self.graph.set_properties(self.graph.get_input_device())
-
-    def grab_frame(self):
-        self.graph.grab_frame()
+def pencil_sketch(img):
+    _, res = cv2.pencilSketch(img)
+    return res
