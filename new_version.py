@@ -73,6 +73,7 @@ try:
     subprocess.call(["python","-m","setup.py","sdist","bdist_wheel"])
     subprocess.call(["python","-m","twine","upload","dist/*","-u",login,"-p",passw])
     subprocess.call(["git","pull"])
+    subprocess.call(["git","add","."])
     subprocess.call(["git","commit","-a","-m",msg])
     subprocess.call(["git","push"])
 except subprocess.CalledProcessError:
