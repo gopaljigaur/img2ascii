@@ -29,6 +29,7 @@ import os
 import subprocess
 import shutil
 from getpass import getpass
+import sys
 file = open("setup.py","r+")
 file_temp = open("setup_tmp.py","w")
 content = file.read()
