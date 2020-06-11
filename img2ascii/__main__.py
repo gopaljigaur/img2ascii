@@ -123,6 +123,10 @@ def main(argv):
             print('To get help on usage : img2ascii.py -h <or> img2ascii.py --help')
             sys.exit()
 
+      elif opt in ("-f","--fancy"):
+         fancy = True
+         color=2
+         
       elif opt in ("--fcolor"):
          fcolor = arg
          if fcolor in colors:
@@ -205,9 +209,6 @@ def main(argv):
             print("No camera input available. Please check your camera or use text, image or video mode.")
             sys.exit()
 
-      elif opt in ("-f","--fancy"):
-         fancy = True
-         color=2
          
    print('') 
 
