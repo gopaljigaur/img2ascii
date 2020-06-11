@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/gopaljigaur/img2ascii) 
+
 [![PyPI version](https://badge.fury.io/py/img2ascii.svg)](https://badge.fury.io/py/img2ascii) 
 # Image2ASCII
 
