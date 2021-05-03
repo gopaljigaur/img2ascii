@@ -66,7 +66,8 @@ def disphelp():
    print('For webcam : img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]')
    print('')
    
-def main(argv):
+def main():
+   argv = sys.argv[1:]
    kernel = 7    #default
    density = 0.3 #default
    color = 0     #default
@@ -349,4 +350,4 @@ def getCamera():
    return dev
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+   main()

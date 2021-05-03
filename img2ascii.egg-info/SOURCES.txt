@@ -11,6 +11,7 @@ img2ascii/webcam_gen.py
 img2ascii.egg-info/PKG-INFO
 img2ascii.egg-info/SOURCES.txt
 img2ascii.egg-info/dependency_links.txt
+img2ascii.egg-info/entry_points.txt
 img2ascii.egg-info/requires.txt
 img2ascii.egg-info/top_level.txt
 img2ascii/fancy/1.jpg

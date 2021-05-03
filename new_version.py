@@ -70,7 +70,7 @@ except OSError as e:
     print("Warn: %s : %s" % ("img2ascii.egg-info", e.strerror))
 
 try:
-    subprocess.call(["python","-m","setup.py","sdist","bdist_wheel"])
+    subprocess.call(["python","setup.py","bdist_wheel"])
     subprocess.call(["python","-m","twine","upload","dist/*","-u",login,"-p",passw])
     subprocess.call(["git","pull"])
     subprocess.call(["git","add","."])
