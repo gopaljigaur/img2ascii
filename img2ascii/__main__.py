@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ##
 ##img2ascii
 ##
@@ -33,6 +33,39 @@ from .video_gen import generate_ascii_v
 from .webcam_gen import generate_ascii_w
 from .pygrabber.dshow_graph import FilterGraph
 
+def disphelp():
+   print('')
+   print('img2ascii')
+   print('')
+   print('Authors:')
+   print(' Gopalji Gaur <gopaljigaur@gmail.com>')
+   print('')
+   print('img2ascii is a library written in python which can convert image or video files to ASCII')
+   print('')
+   print('Option list:')
+   print('')
+   print('-h or --help       : To generate this help text')
+   print('-m or --mode       : Select the mode of operation -- `t` for text, `i` for image, `v` for video and `w` for webcam input')
+   print('-c or --color      : Optional parameter to select color mode. 0 - binary, 1 - Grayscale and 2 - RGB. Default color mode is binary')
+   print('--fcolor           : Optional parameter to set the text color in binary color mode. Default = white')
+   print('--bcolor           : Optional parameter to set the background color in binary color mode. Default = black')
+   print('                     for --fcolor and --bcolor, you can use color names - [white, black, red, green, blue, yellow, cyan, magenta]')
+   print('                     For all other colors hex color codes must be supplied')
+   print('-k or --kernel     : Optional parameter to set the kernel size, default is 7px')
+   print('-d or --density    : Optional parameter to set the ASCII text density on image, default is 0.3 units; Range - (0,1) (exclusive)')
+   print('-i or --ifile      : Path to the input file for image and video modes')
+   print('-o or --ofile      : Path to the output file for image and video modes')
+   print('-s or --cam_source : Camera to be used for webcam mode. Use 0,1,2,3... to select cameras connected to the PC. Default value is 0')
+   print('-f or --fancy      : Fancy color mode :) [Color mode will default to RGB]')
+   print('')
+   print('Usage : ')
+   print('')
+   print('For text   : img2ascii.py -m <mode>[t=text] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
+   print('For image  : img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
+   print('For video  : img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
+   print('For webcam : img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]')
+   print('')
+   
 def main(argv):
    kernel = 7    #default
    density = 0.3 #default
@@ -72,41 +105,13 @@ def main(argv):
       print('For webcam : img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] --fcolor <text_color_hex>[optional] --bcolor <background_color_hex>[optional] -k <kernel_size>[optional] -d <text_density>[optional] -s <source_camera (0,1,2...)>[optional]  -f [fancy mode (optional)]')
       print('To get help on usage : img2ascii.py -h <or> img2ascii.py --help')
       sys.exit(2)
-   
+   if not opts:
+      disphelp()
+      sys.exit()
    for opt, arg in opts:
 
       if opt == '-h':
-         print('')
-         print('img2ascii')
-         print('')
-         print('Authors:')
-         print(' Gopalji Gaur <gopaljigaur@gmail.com>')
-         print('')
-         print('img2ascii is a library written in python which can convert image or video files to ASCII')
-         print('')
-         print('Option list:')
-         print('')
-         print('-h or --help       : To generate this help text')
-         print('-m or --mode       : Select the mode of operation -- `t` for text, `i` for image, `v` for video and `w` for webcam input')
-         print('-c or --color      : Optional parameter to select color mode. 0 - binary, 1 - Grayscale and 2 - RGB. Default color mode is binary')
-         print('--fcolor           : Optional parameter to set the text color in binary color mode. Default = white')
-         print('--bcolor           : Optional parameter to set the background color in binary color mode. Default = black')
-         print('                     for --fcolor and --bcolor, you can use color names - [white, black, red, green, blue, yellow, cyan, magenta]')
-         print('                     For all other colors hex color codes must be supplied')
-         print('-k or --kernel     : Optional parameter to set the kernel size, default is 7px')
-         print('-d or --density    : Optional parameter to set the ASCII text density on image, default is 0.3 units; Range - (0,1) (exclusive)')
-         print('-i or --ifile      : Path to the input file for image and video modes')
-         print('-o or --ofile      : Path to the output file for image and video modes')
-         print('-s or --cam_source : Camera to be used for webcam mode. Use 0,1,2,3... to select cameras connected to the PC. Default value is 0')
-         print('-f or --fancy      : Fancy color mode :) [Color mode will default to RGB]')
-         print('')
-         print('Usage : ')
-         print('')
-         print('For text   : img2ascii.py -m <mode>[t=text] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
-         print('For image  : img2ascii.py -m <mode>[i=image] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
-         print('For video  : img2ascii.py -m <mode>[v=video] -c[color mode (optional)] -i <inputfile> -o <outputfile> -k <kernel_size>[optional] -d <text_density>[optional]')
-         print('For webcam : img2ascii.py -m <mode>[w=webcam] -c[color mode (optional)] -k <kernel_size>[optional] -d <text_density>[optional -s <source_camera (0,1,2...)>[optional]')
-         print('')
+         disphelp()
          sys.exit()
 
       elif opt in ("-m", "--mode"):
