@@ -29,15 +29,11 @@ import os
 import subprocess
 import shutil
 from getpass import getpass
-file = open("setup.py","r+")
-file_temp = open("setup_tmp.py","w")
+file = open("setup.py","r")
 content = file.read()
-file_temp.write(content)
 file.close()
-file_temp.close()
+shutil.copyfile('setup.py', 'setup_tmp.py')
 try:
-    file = open("setup.py","w+")
-
     version = content[content.find("version")+9:content.find("author")-7]
     start = content[:content.find("version")+9]
     end = content[content.find("author")-7:]
@@ -51,6 +47,7 @@ try:
     print("Username : ",end="")
     login = input()
     passw = getpass(prompt="Password : ",stream=None)
+    file = open("setup.py","w+")
     file.seek(0)
     file.write(new)
     file.close()

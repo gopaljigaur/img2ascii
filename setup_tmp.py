@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="img2ascii",
-    version="3.0.4",
+    version="3.0.6",
     author="Gopalji Gaur",
     author_email="gopaljigaur@gmail.com",
     description="Image/Video to ASCII conversion",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/gopaljigaur/img2ascii",
-    packages=setuptools.find_packages(where="src"),
+    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -20,11 +20,10 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'img2ascii = src:img2acii:main',
+            'img2ascii = img2acii:main',
         ],
     },
     python_requires='>=3.4',
-    package_dir={"": "src"},
     install_requires=['numpy','opencv-python','filetype','comtypes'],
     include_package_data=True,
 )

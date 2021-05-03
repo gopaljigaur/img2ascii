@@ -1,0 +1,3 @@
+[console_scripts]
+img2ascii = img2acii:main
+
