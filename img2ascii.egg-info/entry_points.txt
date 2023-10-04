@@ -1,3 +1,3 @@
 [console_scripts]
-img2ascii = img2acii:main
+img2ascii = img2ascii:main
 
