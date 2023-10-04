@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'img2ascii = img2acii:main',
+            'img2ascii = img2ascii:main',
         ],
     },
     python_requires='>=3.4',
